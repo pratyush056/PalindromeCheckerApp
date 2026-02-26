@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 public class PalindromeCheckerApp {
         public static void main(String[] args) {
             Scanner scanner = new Scanner(System.in);
@@ -17,13 +18,20 @@ public class PalindromeCheckerApp {
             if (input == null || input.isEmpty()) return false;
 
             String clean = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
-            String reversed = "";
+            char[] chars = clean.toCharArray();
 
-            for (int i = clean.length() - 1; i >= 0; i--) {
-                reversed += clean.charAt(i);
+            int left = 0;
+            int right = chars.length - 1;
+
+            while (left < right){
+                if (chars[left] != chars[right]) {
+                    return false;
+                }
+                left++;
+                right--;
             }
 
-            return clean.equals(reversed);
+            return true;
         }
     }
 
