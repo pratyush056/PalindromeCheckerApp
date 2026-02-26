@@ -14,17 +14,16 @@ public class PalindromeCheckerApp {
         }
 
         public static boolean isPalindrome(String input) {
-            if (input == null) return false;
+            if (input == null || input.isEmpty()) return false;
 
             String clean = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
-            int length = clean.length();
+            String reversed = "";
 
-            for (int i = 0; i < length / 2; i++) {
-                if (clean.charAt(i) != clean.charAt(length - 1 - i)) {
-                    return false;
+            for (int i = clean.length() - 1; i >= 0; i--) {
+                reversed += clean.charAt(i);
             }
-        }
 
-            return true;
+            return clean.equals(reversed);
+        }
     }
-}
+
