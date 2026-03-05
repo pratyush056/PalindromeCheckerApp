@@ -1,6 +1,5 @@
 import java.util.LinkedList;
 import java.util.Scanner;
-import java.util.LinkedList;
 
 public class PalindromeCheckerApp {
         public static void main(String[] args) {
@@ -21,20 +20,19 @@ public class PalindromeCheckerApp {
 
             String clean = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
 
-            LinkedList<Character> list = new LinkedList<>();
 
-            for (char c : clean.toCharArray()) {
-                list.add(c);
-            }
+            return checkPalindrome(clean, 0, clean.length() - 1);
 
-            LinkedList<Character> reversed = new LinkedList<>(list);
-            java.util.Collections.reverse(reversed);
+            
+        }
 
-            if (!list.equals(reversed)) {
+        public static boolean checkPalindrome(String str, int start, int end) {
+            if (start >= end)
+                return true;
+
+            if (str.charAt(start) != str.charAt(end))
                 return false;
-            }
 
-            return true;
+            return checkPalindrome(str, start + 1, end - 1);
         }
     }
-
