@@ -1,6 +1,6 @@
 import java.util.LinkedList;
 import java.util.Scanner;
-import java.util.Deque;
+import java.util.LinkedList;
 
 public class PalindromeCheckerApp {
         public static void main(String[] args) {
@@ -21,16 +21,17 @@ public class PalindromeCheckerApp {
 
             String clean = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
 
-            Deque<Character> deque = new LinkedList<>();
+            LinkedList<Character> list = new LinkedList<>();
 
             for (char c : clean.toCharArray()) {
-                deque.addLast(c);
+                list.add(c);
             }
 
-            while (deque.size() > 1) {
-                if (!deque.removeFirst().equals(deque.removeLast())) {
-                    return false;
-                }
+            LinkedList<Character> reversed = new LinkedList<>(list);
+            java.util.Collections.reverse(reversed);
+
+            if (!list.equals(reversed)) {
+                return false;
             }
 
             return true;
