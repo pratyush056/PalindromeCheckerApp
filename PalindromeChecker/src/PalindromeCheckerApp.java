@@ -23,8 +23,9 @@ public class PalindromeCheckerApp {
 
             return checkPalindrome(clean, 0, clean.length() - 1);
 
+            
         }
-        
+
         public static boolean checkPalindrome(String str, int start, int end) {
             if (start >= end)
                 return true;
@@ -35,4 +36,3 @@ public class PalindromeCheckerApp {
             return checkPalindrome(str, start + 1, end - 1);
         }
     }
-
