@@ -18,7 +18,7 @@ public class PalindromeCheckerApp {
         public static boolean isPalindrome(String input) {
             if (input == null || input.isEmpty()) return false;
 
-            String clean = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+            String clean = input.replaceAll("\\s+", "").toLowerCase();
 
 
             return checkPalindrome(clean, 0, clean.length() - 1);
