@@ -10,11 +10,25 @@ public class PalindromeCheckerApp {
             System.out.print("Input text: ");
             String input = scanner.nextLine();
 
-            PalindromeStrategy strategy = new DequeStrategy();
-            PalindromeChecker checker = new PalindromeChecker(strategy);
-            boolean result = checker.checkPalindrome(input);
+            PalindromeStrategy stackStrategy = new StackStrategy();
+            PalindromeStrategy dequeStrategy = new DequeStrategy();
 
-            System.out.println("Is it a Palindrome? : " + result);
+            PalindromeChecker stackChecker = new PalindromeChecker(stackStrategy);
+            PalindromeChecker dequeChecker = new PalindromeChecker(dequeStrategy);
+
+            long start1 = System.nanoTime();
+            boolean result1 = stackChecker.checkPalindrome(input);
+            long end1 = System.nanoTime();
+
+            long start2 = System.nanoTime();
+            boolean result2 = dequeChecker.checkPalindrome(input);
+            long end2 = System.nanoTime();
+
+            System.out.println("Stack Strategy Result: " + result1);
+            System.out.println("Stack Execution Time: " + (end1 - start1) + " ns");
+
+            System.out.println("Deque Strategy Result: " + result2);
+            System.out.println("Deque Execution Time: " + (end2 - start2) + " ns");
 
             scanner.close();
         }
